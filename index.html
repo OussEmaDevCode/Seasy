@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Seasy</title>
+	<style>
+		h2 {
+			text-align: center;
+			margin-top: 4em;
+			color: white;
+			font-weight: bold;
+		}
+		body {
+			background-color: dodgerblue;
+			font-family: 'Roboto', sans-serif;
+		}
+	</style>
+</head>
+
+<body>
+	<h2 id="text">COPY TEXT</h2>
+
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+	     https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-database.js"></script>
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyBOdEmFYm7vcRW7fk3uWeTwYCz6su2gAl4",
+			authDomain: "seasy-493ea.firebaseapp.com",
+			databaseURL: "https://seasy-493ea.firebaseio.com",
+			projectId: "seasy-493ea",
+			storageBucket: "seasy-493ea.appspot.com",
+			messagingSenderId: "317219887728",
+			appId: "1:317219887728:web:a94d962be596cff168f2b5",
+			measurementId: "G-2PSGFCRYE2"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		firebase.analytics();
+		var database = firebase.database();
+		var text = database.ref('/text');
+		text.on('value', function(snapshot) {
+			document.getElementById("text").innerHTML = snapshot.val();
+		});
+		</script>
+</body>
+</html>
