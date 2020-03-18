@@ -1,24 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<title>Seasy</title>
 	<style>
-		h2 {
-			text-align: center;
-			margin-top: 4em;
+		div {
+  			margin: auto;
+  			width: 35%;		
+    		margin-top: 4em;
+		}
+		textarea {
+
 			color: white;
+			width: 500px;
+			font-size : 20px;
 			font-weight: bold;
+			background: dodgerblue;
+			border: 2px solid white;
+			border-radius: 10px;
+
 		}
 		body {
 			background-color: dodgerblue;
 			font-family: 'Roboto', sans-serif;
 		}
+		svg {
+			cursor: pointer;
+			float: right;
+		}
 	</style>
 </head>
 
 <body>
-	<h2 id="text">COPY TEXT</h2>
+	<div>
 
+		<textarea id="text">COPY TEXT</textarea>
+
+		<svg id="send" class="bi bi-cursor-fill" width="3em" height="3em" viewBox="0 0 20 20" fill="white" xmlns="http://www.w3.org/2000/svg">
+  		<path fill-rule="evenodd" d="M16.081 4.182a.5.5 0 01.104.557l-5.657 12.727a.5.5 0 01-.917-.006L7.57 12.694l-4.766-2.042a.5.5 0 01-.006-.917L15.525 4.08a.5.5 0 01.556.103z" clip-rule="evenodd"></path>
+		</svg>
+
+	</div>
 	<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
 
 	<!-- TODO: Add SDKs for Firebase products that you want to use
@@ -45,6 +67,9 @@
 		text.on('value', function(snapshot) {
 			document.getElementById("text").innerHTML = snapshot.val();
 		});
+		document.getElementById("send").onclick = function() {
+			text.set(document.getElementById("text").value);
+		}
 		</script>
 </body>
 </html>
